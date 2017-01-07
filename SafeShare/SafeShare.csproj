@@ -50,8 +50,14 @@
     <Compile Include="Core\DataBases\CoinNodeDB.cs" />
     <Compile Include="Core\DataBases\NodeDB.cs" />
     <Compile Include="Core\DataBases\SuperNodeDB.cs" />
+    <Compile Include="Core\Data\CoinChain.cs" />
+    <Compile Include="Core\Data\CoinNode\MoneyController.cs" />
+    <Compile Include="Core\Data\CoinNode\Payment.cs" />
+    <Compile Include="Core\Data\CoinNode\SuperCoinNode.cs" />
     <Compile Include="Core\Handlers\ClientHandler.cs" />
     <Compile Include="Core\Handlers\DownloadHandler.cs" />
+    <Compile Include="Core\Handlers\MessageHandler.cs" />
+    <Compile Include="Core\Handlers\PaymentHandler.cs" />
     <Compile Include="Core\Networking\Clients\Identity.cs" />
     <Compile Include="Core\Networking\Clients\SafeNode.cs" />
     <Compile Include="Core\Networking\ProxyEngine.cs" />
@@ -85,6 +91,12 @@
     <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Core\Setup\FirstSetup.resx">
@@ -98,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -52,11 +52,13 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.safeShareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.positionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.applyForSuperCoinNodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -267,6 +269,16 @@
             this.columnHeader7.Text = "Filesize";
             this.columnHeader7.Width = 143;
             // 
+            // tabPage7
+            // 
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(820, 303);
+            this.tabPage7.TabIndex = 4;
+            this.tabPage7.Text = "Downloads";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -290,7 +302,8 @@
             // safeShareToolStripMenuItem
             // 
             this.safeShareToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.connectToolStripMenuItem});
+            this.connectToolStripMenuItem,
+            this.positionsToolStripMenuItem});
             this.safeShareToolStripMenuItem.Name = "safeShareToolStripMenuItem";
             this.safeShareToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.safeShareToolStripMenuItem.Text = "SafeShare";
@@ -298,18 +311,22 @@
             // connectToolStripMenuItem
             // 
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.connectToolStripMenuItem.Text = "Connect";
             // 
-            // tabPage7
+            // positionsToolStripMenuItem
             // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(820, 303);
-            this.tabPage7.TabIndex = 4;
-            this.tabPage7.Text = "Downloads";
-            this.tabPage7.UseVisualStyleBackColor = true;
+            this.positionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.applyForSuperCoinNodeToolStripMenuItem});
+            this.positionsToolStripMenuItem.Name = "positionsToolStripMenuItem";
+            this.positionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.positionsToolStripMenuItem.Text = "Positions";
+            // 
+            // applyForSuperCoinNodeToolStripMenuItem
+            // 
+            this.applyForSuperCoinNodeToolStripMenuItem.Name = "applyForSuperCoinNodeToolStripMenuItem";
+            this.applyForSuperCoinNodeToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.applyForSuperCoinNodeToolStripMenuItem.Text = "Apply for SuperCoinNode";
             // 
             // Form1
             // 
@@ -364,6 +381,8 @@
         private System.Windows.Forms.ToolStripMenuItem safeShareToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectToolStripMenuItem;
         private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.ToolStripMenuItem positionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem applyForSuperCoinNodeToolStripMenuItem;
     }
 }
 
