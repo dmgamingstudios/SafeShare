@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{463A63A0-9BC3-4738-B58E-E7DFFE02FB24}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>FuhrerShare</RootNamespace>
+    <AssemblyName>FuhrerShare</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config.cs" />
+    <Compile Include="Core\DataBases\CoinNodeDB.cs" />
+    <Compile Include="Core\DataBases\NodeDB.cs" />
+    <Compile Include="Core\DataBases\SuperNodeDB.cs" />
+    <Compile Include="Core\Handlers\ClientHandler.cs" />
+    <Compile Include="Core\Handlers\DownloadHandler.cs" />
+    <Compile Include="Core\Networking\Clients\Identity.cs" />
+    <Compile Include="Core\Networking\Clients\SafeNode.cs" />
+    <Compile Include="Core\Networking\ProxyEngine.cs" />
+    <Compile Include="Core\Nodes\CoinNode.cs" />
+    <Compile Include="Core\Security\FileDB.cs" />
+    <Compile Include="Core\Security\File.cs" />
+    <Compile Include="Core\Security\RandomKey.cs" />
+    <Compile Include="Core\Setup\FirstSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Core\Setup\FirstSetup.Designer.cs">
+      <DependentUpon>FirstSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Setup\IdentitySetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Core\Setup\IdentitySetup.Designer.cs">
+      <DependentUpon>IdentitySetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Setup\KeyRequest.cs" />
+    <Compile Include="Core\Setup\NetworkSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Core\Setup\NetworkSetup.Designer.cs">
+      <DependentUpon>NetworkSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\ConnectionMethod.cs" />
+    <Compile Include="Forms\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Core\Setup\FirstSetup.resx">
+      <DependentUpon>FirstSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\Setup\IdentitySetup.resx">
+      <DependentUpon>IdentitySetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\Setup\NetworkSetup.resx">
+      <DependentUpon>NetworkSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
