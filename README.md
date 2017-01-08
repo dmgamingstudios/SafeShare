@@ -18,3 +18,4 @@ A secure system for file transfer and more! ALPHA
   Sure! We'd love to see people help us, cant code? No problem! Send us your ideas and maybe we'll implement them :D
   
 Note: This readme might be changed later on
+Note: We use Titanium Web Proxy as a base for our .secunet sites, check out their awesome repo: <a href="https://github.com/justcoding121/Titanium-Web-Proxy"> Titanium Web Proxy </a>
