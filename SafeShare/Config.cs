@@ -15,6 +15,39 @@ namespace FuhrerShare
     {
         private static readonly string SettingsPath = Path.Combine(Application.StartupPath, "config.xml");
         internal static string OTP = "";
+        public static bool UseClear
+        {
+            get
+            {
+                return bool.Parse(ReadValueSafe("UseClear", "true"));
+            }
+            set
+            {
+                WriteValue("UseClear", value.ToString());
+            }
+        }
+        public static bool UseI2P
+        {
+            get
+            {
+                return bool.Parse(ReadValueSafe("UseI2P", "false"));
+            }
+            set
+            {
+                WriteValue("UseI2P", value.ToString());
+            }
+        }
+        public static bool UseTor
+        {
+            get
+            {
+                return bool.Parse(ReadValueSafe("UseTor", "false"));
+            }
+            set
+            {
+                WriteValue("UseTor", value.ToString());
+            }
+        }
         public static string UserPass
         {
             get

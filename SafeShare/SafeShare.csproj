@@ -128,6 +128,35 @@
     <Compile Include="Core\Networking\Clients\SafeNode.cs" />
     <Compile Include="Core\Networking\ProxyEngine.cs" />
     <Compile Include="Core\Networking\Proxy\I2P\I2PProxyServer.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Adapters\Random.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\PInvoke\Desktop.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\PInvoke\Job.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\PInvoke\Process.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\PInvoke\Window.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\ConfigurationFormat.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\DownloadableFile.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\IConfigurationDictionary.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\IFileFetcher.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\IToolRunner.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\LineByLineConfigurer.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\Privoxy\PrivoxyConfigurationDictionary.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\Privoxy\PrivoxyFetcher.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\Privoxy\PrivoxySettings.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\SimpleToolRunner.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\Tool.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\ToolSettings.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\Tor\TorConfigurationDictionary.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\Tor\TorControlClient.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\Tor\TorControlException.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\Tor\TorFetcher.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\Tor\TorPasswordHasher.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\Tor\TorSettings.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\Tools\VirtualDesktopToolRunner.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\TorSharpException.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\TorSharpProxy.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\TorSharpSettings.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\Data\TorSharpToolFetcher.cs" />
+    <Compile Include="Core\Networking\Proxy\Tor\TorProxyServer.cs" />
     <Compile Include="Core\Nodes\CoinNode.cs" />
     <Compile Include="Core\Security\FileDB.cs" />
     <Compile Include="Core\Security\File.cs" />
@@ -204,8 +233,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\Networking\Proxy\Tor\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
