@@ -7,6 +7,30 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeShare", "SafeShare\Safe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecuProxy", "SecuProxy\SecuProxy.csproj", "{362B00A9-4395-4AD2-81D2-EE61FF51FFC5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{47D13E2A-4F17-48EB-9CFB-FD012360EC43}"
+	ProjectSection(SolutionItems) = preProject
+		3rd Party Dll's\i2p.dll = 3rd Party Dll's\i2p.dll
+		3rd Party Dll's\IKVM.AWT.WinForms.dll = 3rd Party Dll's\IKVM.AWT.WinForms.dll
+		3rd Party Dll's\IKVM.OpenJDK.Beans.dll = 3rd Party Dll's\IKVM.OpenJDK.Beans.dll
+		3rd Party Dll's\IKVM.OpenJDK.Charsets.dll = 3rd Party Dll's\IKVM.OpenJDK.Charsets.dll
+		3rd Party Dll's\IKVM.OpenJDK.Corba.dll = 3rd Party Dll's\IKVM.OpenJDK.Corba.dll
+		3rd Party Dll's\IKVM.OpenJDK.Core.dll = 3rd Party Dll's\IKVM.OpenJDK.Core.dll
+		3rd Party Dll's\IKVM.OpenJDK.Management.dll = 3rd Party Dll's\IKVM.OpenJDK.Management.dll
+		3rd Party Dll's\IKVM.OpenJDK.Media.dll = 3rd Party Dll's\IKVM.OpenJDK.Media.dll
+		3rd Party Dll's\IKVM.OpenJDK.Misc.dll = 3rd Party Dll's\IKVM.OpenJDK.Misc.dll
+		3rd Party Dll's\IKVM.OpenJDK.Naming.dll = 3rd Party Dll's\IKVM.OpenJDK.Naming.dll
+		3rd Party Dll's\IKVM.OpenJDK.Remoting.dll = 3rd Party Dll's\IKVM.OpenJDK.Remoting.dll
+		3rd Party Dll's\IKVM.OpenJDK.Security.dll = 3rd Party Dll's\IKVM.OpenJDK.Security.dll
+		3rd Party Dll's\IKVM.OpenJDK.SwingAWT.dll = 3rd Party Dll's\IKVM.OpenJDK.SwingAWT.dll
+		3rd Party Dll's\IKVM.OpenJDK.Text.dll = 3rd Party Dll's\IKVM.OpenJDK.Text.dll
+		3rd Party Dll's\IKVM.OpenJDK.Util.dll = 3rd Party Dll's\IKVM.OpenJDK.Util.dll
+		3rd Party Dll's\IKVM.OpenJDK.XML.API.dll = 3rd Party Dll's\IKVM.OpenJDK.XML.API.dll
+		3rd Party Dll's\IKVM.Runtime.dll = 3rd Party Dll's\IKVM.Runtime.dll
+		3rd Party Dll's\IKVM.Runtime.JNI.dll = 3rd Party Dll's\IKVM.Runtime.JNI.dll
+		3rd Party Dll's\mstreaming.dll = 3rd Party Dll's\mstreaming.dll
+		3rd Party Dll's\streaming.dll = 3rd Party Dll's\streaming.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
