@@ -20,6 +20,8 @@ namespace FuhrerShare.Core.Handlers
             string[] msgData = msg.Split('|');
             switch(msgData[0])
             {
+                case "REQUESTSECUSITE":
+                    break;
                 default:
                     return "Whatdoyoumean?";
             }

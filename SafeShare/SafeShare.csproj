@@ -32,9 +32,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +58,8 @@
     <Compile Include="Core\Data\CoinNode\MoneyController.cs" />
     <Compile Include="Core\Data\CoinNode\Payment.cs" />
     <Compile Include="Core\Data\CoinNode\SuperCoinNode.cs" />
+    <Compile Include="Core\Data\SecuSiteNode\ServerSecuSiteNode.cs" />
+    <Compile Include="Core\Data\SecuSiteNode\SuperSecuSiteNode.cs" />
     <Compile Include="Core\Handlers\ClientHandler.cs" />
     <Compile Include="Core\Handlers\DownloadHandler.cs" />
     <Compile Include="Core\Handlers\MessageHandler.cs" />
@@ -123,6 +129,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
