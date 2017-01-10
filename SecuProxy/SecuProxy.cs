@@ -64,7 +64,7 @@ namespace SecuProxy
                       "</body>" +
                       "</html>");
             }
-            string Site = new MessageHandler().RequestSecuNetWebSite("", nodes);
+            string Site = new MessageHandler().RequestSecuNetWebSite("", "", nodes);
             await e.Ok(Site);
         }
         public async Task OnResponse(object sender, SessionEventArgs e)

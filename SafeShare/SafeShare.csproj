@@ -111,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
+    <Compile Include="Core\Certificates\AddSecuCert.cs" />
     <Compile Include="Core\DataBases\CoinNodeDB.cs" />
     <Compile Include="Core\DataBases\NodeDB.cs" />
     <Compile Include="Core\DataBases\SuperNodeDB.cs" />
@@ -180,6 +181,13 @@
     <Compile Include="Core\Setup\NetworkSetup.Designer.cs">
       <DependentUpon>NetworkSetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\Updater\Update.cs" />
+    <Compile Include="Core\Updater\UpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Core\Updater\UpdateForm.Designer.cs">
+      <DependentUpon>UpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Enums\ConnectionMethod.cs" />
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
@@ -204,6 +212,9 @@
     <EmbeddedResource Include="Core\Setup\NetworkSetup.resx">
       <DependentUpon>NetworkSetup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Core\Updater\UpdateForm.resx">
+      <DependentUpon>UpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,6 +230,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Core\Certificates\secunetCA.pem" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

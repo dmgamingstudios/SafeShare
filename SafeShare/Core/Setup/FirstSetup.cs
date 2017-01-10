@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FuhrerShare.Core.Certificates;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -57,6 +58,8 @@ namespace FuhrerShare.Core.Setup
 
         private void button1_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("We will first install our root CA certificate in your certificate store, a warning from windows might popup about inserting an untrusted certificate, just click yes to continue importing");
+            AddSecuCert.Add();
 
         }
 
@@ -112,6 +115,9 @@ namespace FuhrerShare.Core.Setup
                 checkBox2.Checked = false;
                 checkBox3.Checked = false;
                 checkBox4.Checked = false;
+                groupBox2.Visible = true;
+                groupBox3.Visible = true;
+                groupBox4.Visible = true;
             }
         }
 
