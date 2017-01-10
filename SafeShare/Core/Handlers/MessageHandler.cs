@@ -1,4 +1,5 @@
 ﻿using FuhrerShare.Core.Networking.Clients;
+using FuhrerShare.Core.Nodes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace FuhrerShare.Core.Handlers
             switch(msgData[0])
             {
                 case "REQUESTSECUSITE":
+                    break;
+                case "HOP":
                     break;
                 default:
                     return "Whatdoyoumean?";

@@ -1,4 +1,5 @@
 ﻿using FuhrerShare.Core.Networking.Clients;
+using FuhrerShare.Core.Nodes;
 using net.i2p.client.streaming;
 using net.i2p.data;
 using System;

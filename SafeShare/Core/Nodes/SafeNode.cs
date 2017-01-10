@@ -1,4 +1,5 @@
-﻿using FuhrerShare.Core.Security;
+﻿using FuhrerShare.Core.Networking.Clients;
+using FuhrerShare.Core.Security;
 using FuhrerShare.Enums;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FuhrerShare.Core.Networking.Clients
+namespace FuhrerShare.Core.Nodes
 {
     internal class SafeNode
     {
@@ -29,9 +30,21 @@ namespace FuhrerShare.Core.Networking.Clients
             this.hiddenid = hiddenid;
             this.CM = CM;
         }
+        internal string SendNodeMsg(string msg)
+        {
+            try
+            {
+                ClientStream.Write(Encoding.ASCII.GetBytes(msg));
+                byte[] rmsg = new byte[2048];
+                ClientStream.Read(rmsg, 0, rmsg.Length);
+                return Encoding.ASCII.GetString(rmsg);
+            }
+            catch(Exception)
+            { return "We had an exception.."; }
+        }
 		internal void Connect()
         {
-			if(CM == ConnectionMethod.ConnMethod.I2P || CM == ConnectionMethod.ConnMethod.Tor && !ConnectionState)
+			if(CM == ConnectionMethod.ConnMethod.I2P && !ConnectionState)
             {
 
             }
@@ -39,7 +52,7 @@ namespace FuhrerShare.Core.Networking.Clients
             {
 
             }
-			else
+			else if(CM == ConnectionMethod.ConnMethod.Tor && !ConnectionState)
             {
 
             }

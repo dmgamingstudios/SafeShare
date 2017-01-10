@@ -10,6 +10,6 @@ namespace FuhrerShare.Core.Data
     internal class CoinChain
     {
         internal readonly string CoinChainFile = Application.StartupPath + "\\chain.dat";
-
+        
     }
 }

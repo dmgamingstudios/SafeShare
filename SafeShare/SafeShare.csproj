@@ -97,6 +97,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
@@ -119,14 +120,12 @@
     <Compile Include="Core\Data\CoinNode\MoneyController.cs" />
     <Compile Include="Core\Data\CoinNode\Payment.cs" />
     <Compile Include="Core\Data\CoinNode\SuperCoinNode.cs" />
-    <Compile Include="Core\Data\SecuSiteNode\ServerSecuSiteNode.cs" />
-    <Compile Include="Core\Data\SecuSiteNode\SuperSecuSiteNode.cs" />
     <Compile Include="Core\Handlers\ClientHandler.cs" />
     <Compile Include="Core\Handlers\DownloadHandler.cs" />
     <Compile Include="Core\Handlers\MessageHandler.cs" />
     <Compile Include="Core\Handlers\PaymentHandler.cs" />
     <Compile Include="Core\Networking\Clients\Identity.cs" />
-    <Compile Include="Core\Networking\Clients\SafeNode.cs" />
+    <Compile Include="Core\Nodes\SafeNode.cs" />
     <Compile Include="Core\Networking\ProxyEngine.cs" />
     <Compile Include="Core\Networking\Proxy\I2P\I2PProxyServer.cs" />
     <Compile Include="Core\Networking\Proxy\Tor\Data\Adapters\Random.cs" />
@@ -245,6 +244,13 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Dll%27s\libeay32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dll%27s\ssleay32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
