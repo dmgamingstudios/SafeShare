@@ -46,10 +46,10 @@ namespace FuhrerShare.Core.Setup
                     SPC.ProxyPassword = "";
                     client = SPC.CreateConnection("", 1);
                 }
-
+                return new X509Certificate2();
             }
             catch(Exception ex)
-            { }
+            { return new X509Certificate2(); }
         }
     }
 }

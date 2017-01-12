@@ -2,26 +2,32 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FuhrerShare.Core.Nodes
 {
-    internal class CoinNode
+    internal class SuperNode
     {
         internal string name = "";
-        internal string connection = "";
         internal ConnectionMethod.ConnMethod CM;
         internal bool Connected = false;
-        internal CoinNode(string name, string connection, ConnectionMethod.ConnMethod CM)
+        internal SslStream SuperNodeStream;
+        internal SuperNode(string name, ConnectionMethod.ConnMethod CM)
         {
             this.name = name;
-            this.connection = connection;
             this.CM = CM;
         }
         internal void Connect()
         {
 
+        }
+        internal string SendSuperNodeMsg(string msg)
+        {
+            if (!Connected)
+                return "ERR";
+            return null;
         }
     }
 }

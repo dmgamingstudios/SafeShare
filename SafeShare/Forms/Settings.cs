@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OpenSSL.Crypto;
+using OpenSSL.X509;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,7 +24,7 @@ namespace FuhrerShare.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "Certificate Files|*.pfx";
+            openFileDialog1.Filter = "Certificate Files|*.crt";
             if(openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 if (isSignedBySecuNetCA(new X509Certificate2(openFileDialog1.FileName)))
@@ -44,7 +46,7 @@ namespace FuhrerShare.Forms
             }
             X509Certificate2 authority = new X509Certificate2(_data);
             X509Certificate2 certificateToValidate = Cert;
-            X509Chain chain = new X509Chain();
+            System.Security.Cryptography.X509Certificates.X509Chain chain = new System.Security.Cryptography.X509Certificates.X509Chain();
             chain.ChainPolicy.RevocationMode = X509RevocationMode.NoCheck;
             chain.ChainPolicy.RevocationFlag = X509RevocationFlag.EntireChain;
             chain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllowUnknownCertificateAuthority;
@@ -74,6 +76,34 @@ namespace FuhrerShare.Forms
         }
 
         private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+        private CryptoKey GenerateRsaKeyPair()
+        {
+            using (var rsa = new RSA())
+            {
+                rsa.GenerateKeys(8192, 0x10021, null, null);
+                return new CryptoKey(rsa);
+            }
+        }
+        private string GenerateCsr(CryptoKey key, string typenode)
+        {
+            using (var subject = new X509Name
+            {
+                Country = "SN",
+                Organization = "SecuNet " + typenode + " Node",
+                Common = Config.LocalNode.identity.hash
+            })
+            {
+                using (var req = new X509Request(3, subject, key))
+                {
+                    return req.PEM;
+                }
+            }
+        }
+
+        private void Settings_Load(object sender, EventArgs e)
         {
 
         }

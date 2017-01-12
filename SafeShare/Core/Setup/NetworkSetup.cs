@@ -49,6 +49,8 @@ namespace FuhrerShare.Core.Setup
         private void button4_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Please wait while we set things up, DO NOT TURN OFF YOUR COMPUTER, this may take a while");
+            IdentitySetup IS = new IdentitySetup(false, true, false);
+            IS.Show();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

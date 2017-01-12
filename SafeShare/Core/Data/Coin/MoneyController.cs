@@ -1,11 +1,12 @@
-﻿using System;
+﻿using FuhrerShare.Core.Nodes;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FuhrerShare.Core.Data.CoinNode
+namespace FuhrerShare.Core.Data.Coin
 {
     internal class MoneyController
     {

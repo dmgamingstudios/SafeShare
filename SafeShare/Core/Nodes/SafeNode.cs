@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,16 +20,18 @@ namespace FuhrerShare.Core.Nodes
         internal string hiddenid = null;
         internal Identity identity;
         internal SslStream ClientStream;
-        internal SafeNode(string ip, int port, ConnectionMethod.ConnMethod CM = ConnectionMethod.ConnMethod.Clear)
+        internal SafeNode(string name, string ip, int port, X509Certificate2 pkey, bool local, ConnectionMethod.ConnMethod CM = ConnectionMethod.ConnMethod.Clear)
         {
             this.ip = ip;
             this.port = port;
             this.CM = CM;
+            identity = new Identity(pkey, "", name, local);
         }
-		internal SafeNode(string hiddenid, ConnectionMethod.ConnMethod CM)
+		internal SafeNode(string name, X509Certificate2 pkey, string hiddenid, ConnectionMethod.ConnMethod CM, bool local)
         {
             this.hiddenid = hiddenid;
             this.CM = CM;
+            identity = new Identity(pkey, "", name, local);
         }
         internal string SendNodeMsg(string msg)
         {

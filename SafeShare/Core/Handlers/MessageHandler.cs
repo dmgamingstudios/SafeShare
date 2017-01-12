@@ -28,6 +28,7 @@ namespace FuhrerShare.Core.Handlers
                 default:
                     return "Whatdoyoumean?";
             }
+            return "";
         }
     }
 }

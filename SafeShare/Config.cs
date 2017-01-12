@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FuhrerShare.Core.Nodes;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Serialization;
 using System.Xml.XPath;
 
 namespace FuhrerShare
@@ -15,6 +17,68 @@ namespace FuhrerShare
     {
         private static readonly string SettingsPath = Path.Combine(Application.StartupPath, "config.xml");
         internal static string OTP = "";
+        internal static SafeNode LocalNode;
+        internal static void SaveLocalNode()
+        {
+            File.WriteAllText(Path.Combine(Application.StartupPath, "identities", LocalNode.identity.name + ".sni"), SaveSingle<SafeNode>(LocalNode));
+        }
+        internal static void LoadLocalNode()
+        {
+            LocalNode = LoadSingle<SafeNode>(File.ReadAllText(Path.Combine(Application.StartupPath, "identities", LocalNode.identity.name + ".sni")));
+        }
+        private static T LoadSingle<T>(string line)
+        {
+            if (string.IsNullOrEmpty(line)) { return default(T); }
+            T objectOut = default(T);
+            try
+            {
+                XmlDocument xmlDocument = new XmlDocument();
+                xmlDocument.LoadXml(line);
+                string xmlString = xmlDocument.OuterXml;
+                using (StringReader read = new StringReader(xmlString))
+                {
+                    Type outType = typeof(T);
+                    XmlSerializer serializer = new XmlSerializer(outType);
+                    using (XmlReader reader = new XmlTextReader(read))
+                    {
+                        objectOut = (T)serializer.Deserialize(reader);
+                        reader.Close();
+                    }
+                    read.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return objectOut;
+        }
+        private static string SaveSingle<T>(T serializableObject)
+        {
+            if (serializableObject == null) { return ""; }
+            try
+            {
+                XmlDocument xmlDocument = new XmlDocument();
+                XmlSerializer serializer = new XmlSerializer(serializableObject.GetType());
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    serializer.Serialize(stream, serializableObject);
+                    stream.Position = 0;
+                    xmlDocument.Load(stream);
+                    using (var stringWriter = new StringWriter())
+                    using (var xmlTextWriter = XmlWriter.Create(stringWriter))
+                    {
+                        xmlDocument.WriteTo(xmlTextWriter);
+                        xmlTextWriter.Flush();
+                        return stringWriter.GetStringBuilder().ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return "ERR";
+            }
+        }
         public static bool UseClear
         {
             get
@@ -24,6 +88,17 @@ namespace FuhrerShare
             set
             {
                 WriteValue("UseClear", value.ToString());
+            }
+        }
+        public static bool SetupDone
+        {
+            get
+            {
+                return bool.Parse(ReadValueSafe("SetupDone", "false"));
+            }
+            set
+            {
+                WriteValue("SetupDone", value.ToString());
             }
         }
         public static bool UseI2P

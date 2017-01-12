@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FuhrerShare.Core.Setup;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,8 +21,13 @@ namespace FuhrerShare
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (!File.Exists(Application.StartupPath + "\\nodes.dat"))
-                BeginDownloadNodeFile();
+            if(!Config.SetupDone)
+            {
+                FirstSetup FS = new FirstSetup();
+                FS.Show();
+            }
+            //if (!File.Exists(Application.StartupPath + "\\nodes.dat"))
+               // BeginDownloadNodeFile();
         }
         internal void BeginDownloadNodeFile()
         {
