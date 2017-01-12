@@ -1,5 +1,15 @@
 ﻿using FuhrerShare.Core.DataBases;
+using Org.BouncyCastle.Asn1;
+using Org.BouncyCastle.Asn1.Pkcs;
+using Org.BouncyCastle.Asn1.X509;
+using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Crypto.Generators;
+using Org.BouncyCastle.Crypto.Parameters;
+using Org.BouncyCastle.Math;
+using Org.BouncyCastle.Pkcs;
+using Org.BouncyCastle.Security;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -33,10 +43,10 @@ namespace FuhrerShare.Core.Setup
                     HPC = new HttpProxyClient();
                     HPC.ProxyHost = "127.0.0.1";
                     HPC.ProxyPort = 4444;
-                    client = HPC.CreateConnection("", 1);
+                    client = HPC.CreateConnection("", 666);
                 }
                 else if (canuse_clear)
-                    client.Connect("", 1);
+                    client.Connect("127.0.0.1", 1);
                 else if (canuse_tor)
                 {
                     SPC = new Socks5ProxyClient();
@@ -46,6 +56,8 @@ namespace FuhrerShare.Core.Setup
                     SPC.ProxyPassword = "";
                     client = SPC.CreateConnection("", 1);
                 }
+                NetworkStream stream = client.GetStream();
+
                 return new X509Certificate2();
             }
             catch(Exception ex)

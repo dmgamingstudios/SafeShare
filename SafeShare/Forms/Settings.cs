@@ -1,6 +1,4 @@
-﻿using OpenSSL.Crypto;
-using OpenSSL.X509;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -78,29 +76,6 @@ namespace FuhrerShare.Forms
         private void button2_Click(object sender, EventArgs e)
         {
 
-        }
-        private CryptoKey GenerateRsaKeyPair()
-        {
-            using (var rsa = new RSA())
-            {
-                rsa.GenerateKeys(8192, 0x10021, null, null);
-                return new CryptoKey(rsa);
-            }
-        }
-        private string GenerateCsr(CryptoKey key, string typenode)
-        {
-            using (var subject = new X509Name
-            {
-                Country = "SN",
-                Organization = "SecuNet " + typenode + " Node",
-                Common = Config.LocalNode.identity.hash
-            })
-            {
-                using (var req = new X509Request(3, subject, key))
-                {
-                    return req.PEM;
-                }
-            }
         }
 
         private void Settings_Load(object sender, EventArgs e)

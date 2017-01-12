@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\..\..\..\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
@@ -163,6 +166,7 @@
     <Compile Include="Core\Security\FileDB.cs" />
     <Compile Include="Core\Security\File.cs" />
     <Compile Include="Core\Security\RandomKey.cs" />
+    <Compile Include="Core\Security\SignatureVerifier.cs" />
     <Compile Include="Core\Setup\FirstSetup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,12 +257,6 @@
     <None Include="Dll%27s\ssleay32.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ManagedOpenSsl\ManagedOpenSsl.csproj">
-      <Project>{73dcc218-655b-485f-8eac-0ce5f2f7343d}</Project>
-      <Name>ManagedOpenSsl</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

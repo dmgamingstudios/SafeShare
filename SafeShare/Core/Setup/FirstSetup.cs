@@ -60,8 +60,8 @@ namespace FuhrerShare.Core.Setup
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("We will first install our root CA certificate in your certificate store, a warning from windows might popup about inserting an untrusted certificate, just click yes to continue importing");
-            //AddSecuCert.Add();
+            MessageBox.Show("We will first install the root CA certificates in your certificate store, a warning from windows might popup about inserting an untrusted certificate, just click yes to continue importing");
+            AddSecuCert.Add();
 
             NetworkSetup NS = new NetworkSetup(CM);
             NS.Show();

@@ -88,11 +88,11 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 192);
+            this.button1.Location = new System.Drawing.Point(124, 342);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(335, 23);
+            this.button1.Size = new System.Drawing.Size(136, 23);
             this.button1.TabIndex = 5;
-            this.button1.Text = "Request Keys";
+            this.button1.Text = "Request Signed Keys";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -144,12 +144,13 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(124, 342);
+            this.button3.Location = new System.Drawing.Point(12, 192);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(102, 23);
+            this.button3.Size = new System.Drawing.Size(335, 23);
             this.button3.TabIndex = 11;
             this.button3.Text = "Generate new key";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // IdentitySetup
             // 

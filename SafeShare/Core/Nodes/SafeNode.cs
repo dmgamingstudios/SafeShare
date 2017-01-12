@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Security;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace FuhrerShare.Core.Nodes
         internal string hiddenid = null;
         internal Identity identity;
         internal SslStream ClientStream;
+        RSACryptoServiceProvider csp = null;
         internal SafeNode(string name, string ip, int port, X509Certificate2 pkey, bool local, ConnectionMethod.ConnMethod CM = ConnectionMethod.ConnMethod.Clear)
         {
             this.ip = ip;
@@ -35,9 +37,14 @@ namespace FuhrerShare.Core.Nodes
         }
         internal string SendNodeMsg(string msg)
         {
+            SHA512Managed sha512 = new SHA512Managed();
+            csp = (RSACryptoServiceProvider)Config.LocalNode.identity.PubKey.PrivateKey;
             try
             {
-                ClientStream.Write(Encoding.ASCII.GetBytes(msg));
+                byte[] data = Encoding.ASCII.GetBytes(msg);
+                byte[] hash = sha512.ComputeHash(data);
+                string signature = Convert.ToBase64String(csp.SignHash(hash, CryptoConfig.MapNameToOID("SHA512")));
+                ClientStream.Write(Encoding.ASCII.GetBytes(signature + "²" + msg));
                 byte[] rmsg = new byte[2048];
                 ClientStream.Read(rmsg, 0, rmsg.Length);
                 return Encoding.ASCII.GetString(rmsg);

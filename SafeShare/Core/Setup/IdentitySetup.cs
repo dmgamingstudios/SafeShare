@@ -1,4 +1,14 @@
-﻿using System;
+﻿using Org.BouncyCastle.Asn1;
+using Org.BouncyCastle.Asn1.Pkcs;
+using Org.BouncyCastle.Asn1.X509;
+using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Crypto.Generators;
+using Org.BouncyCastle.Crypto.Parameters;
+using Org.BouncyCastle.Math;
+using Org.BouncyCastle.Pkcs;
+using Org.BouncyCastle.Security;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,12 +26,38 @@ namespace FuhrerShare.Core.Setup
     {
         X509Certificate2 cert;
         bool tor, clear, i2p;
+        string pub = null;
+        string csr = null;
         public IdentitySetup(bool tor, bool clear, bool i2p)
         {
             InitializeComponent();
             this.tor = tor;
             this.clear = clear;
             this.i2p = i2p;
+        }
+        internal void GenerateCsr(out string publicKey, out string privateKey, out string eprivkey, out string csr, string name, string pass)
+        {
+            var rsaKeyPairGenerator = new RsaKeyPairGenerator();
+            var genParam = new RsaKeyGenerationParameters(BigInteger.ValueOf(0x10001), new SecureRandom(), 4096, 128);
+            rsaKeyPairGenerator.Init(genParam);
+            AsymmetricCipherKeyPair pair = rsaKeyPairGenerator.GenerateKeyPair();
+            privateKey = pair.Private.ToString();
+            DerObjectIdentifier Do = new DerObjectIdentifier("PBEWithSHA256And256BitAES-CBC-BC");
+            IDictionary attrs = new Hashtable();
+            attrs.Add(X509Name.CN, name);
+            attrs.Add(X509Name.ST, "SecuNet");
+            attrs.Add(X509Name.C, "SN");
+            var subject = new X509Name(new ArrayList(attrs.Keys), attrs);
+            var pkcs10CertificationRequest = new Pkcs10CertificationRequest(PkcsObjectIdentifiers.Sha256WithRsaEncryption.Id, subject, pair.Public, null, pair.Private);
+            csr = Convert.ToBase64String(pkcs10CertificationRequest.GetEncoded());
+            var pkInfo = EncryptedPrivateKeyInfoFactory.CreateEncryptedPrivateKeyInfo(Do, pass.ToCharArray(), Encoding.ASCII.GetBytes(name), 50, pair.Private);
+            eprivkey = Convert.ToBase64String(pkInfo.GetDerEncoded());
+            publicKey = pair.Public.ToString();
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            GenerateCsr(out pub, out string lol, out string epriv, out csr, textBox1.Text, textBox2.Text);
+            richTextBox1.Text = lol;
         }
 
         private void button2_Click(object sender, EventArgs e)
