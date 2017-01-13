@@ -19,7 +19,7 @@ namespace FuhrerShare.Core.Nodes
         internal string ip = null;
         internal int port = 0;
         internal string hiddenid = null;
-        internal Identity identity;
+        internal LocalIdentity identity;
         internal SslStream ClientStream;
         RSACryptoServiceProvider csp = null;
         internal LocalSafeNode(string name, string ip, int port, X509Certificate2 pkey, bool local, string hash, ConnectionMethod.ConnMethod CM = ConnectionMethod.ConnMethod.Clear)
@@ -27,13 +27,13 @@ namespace FuhrerShare.Core.Nodes
             this.ip = ip;
             this.port = port;
             this.CM = CM;
-            identity = new Identity(pkey, hash, name, local);
+            identity = new LocalIdentity(pkey, hash, name, local);
         }
 		internal LocalSafeNode(string name, X509Certificate2 pkey, string hiddenid, ConnectionMethod.ConnMethod CM, bool local, string hash)
         {
             this.hiddenid = hiddenid;
             this.CM = CM;
-            identity = new Identity(pkey, hash, name, local);
+            identity = new LocalIdentity(pkey, hash, name, local);
         }
         internal string SendNodeMsg(string msg)
         {
@@ -42,7 +42,7 @@ namespace FuhrerShare.Core.Nodes
                 return "ERR";
             }
             SHA512Managed sha512 = new SHA512Managed();
-            csp = (RSACryptoServiceProvider)Config.LocalNode.identity.PubKey.PrivateKey;
+            csp = (RSACryptoServiceProvider)Config.LocalNode.identity.pfxcert.PrivateKey;
             try
             {
                 byte[] data = Encoding.ASCII.GetBytes(msg);

@@ -19,14 +19,6 @@ namespace FuhrerShare
         private static readonly string SettingsPath = Path.Combine(Application.StartupPath, "config.xml");
         internal static string OTP = "";
         internal static LocalSafeNode LocalNode;
-        internal static void SaveLocalNode()
-        {
-            File.WriteAllText(Path.Combine(Application.StartupPath, "identities", LocalNode.identity.name + ".sni"), SaveSingle<LocalSafeNode>(LocalNode));
-        }
-        internal static void LoadLocalNode()
-        {
-            LocalNode = LoadSingle<LocalSafeNode>(File.ReadAllText(Path.Combine(Application.StartupPath, "identities", LocalNode.identity.name + ".sni")));
-        }
         private static T LoadSingle<T>(string line)
         {
             if (string.IsNullOrEmpty(line)) { return default(T); }

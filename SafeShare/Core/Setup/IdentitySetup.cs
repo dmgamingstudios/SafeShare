@@ -28,7 +28,6 @@ namespace FuhrerShare.Core.Setup
 {
     public partial class IdentitySetup : Form
     {
-        X509Certificate2 cert;
         bool tor, clear, i2p;
         string pub = null;
         string ihash = null;
@@ -87,9 +86,9 @@ namespace FuhrerShare.Core.Setup
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Config.LocalNode = new Nodes.LocalSafeNode(textBox1.Text, "127.0.0.1", 5248, cert, true, ihash);
-            Config.SaveLocalNode();
+            Config.LocalNode = new Nodes.LocalSafeNode(textBox1.Text, "127.0.0.1", 5248, PfxCert, true, ihash);
             Config.SetupDone = true;
+            new SaveIdentity(Config.LocalNode);
             MessageBox.Show("We are done YAY");
         }
 

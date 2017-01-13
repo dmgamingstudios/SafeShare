@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto">
-      <HintPath>..\..\..\..\BouncyCastle.Crypto.dll</HintPath>
+      <HintPath>..\3rd Party Dll's\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
@@ -125,6 +125,7 @@
     <Compile Include="Core\Data\CoinChain.cs" />
     <Compile Include="Core\Data\Coin\MoneyController.cs" />
     <Compile Include="Core\Data\Coin\Payment.cs" />
+    <Compile Include="Core\Networking\Clients\LocalIdentity.cs" />
     <Compile Include="Core\Nodes\LocalSafeNode.cs" />
     <Compile Include="Core\Nodes\SuperCoinNode.cs" />
     <Compile Include="Core\Handlers\ClientHandler.cs" />
