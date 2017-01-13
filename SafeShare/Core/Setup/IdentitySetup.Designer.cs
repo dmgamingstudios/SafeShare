@@ -45,9 +45,9 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Enabled = false;
             this.richTextBox1.Location = new System.Drawing.Point(12, 12);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(335, 96);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
@@ -116,9 +116,9 @@
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Enabled = false;
             this.richTextBox2.Location = new System.Drawing.Point(12, 247);
             this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.ReadOnly = true;
             this.richTextBox2.Size = new System.Drawing.Size(335, 87);
             this.richTextBox2.TabIndex = 8;
             this.richTextBox2.Text = "";
@@ -173,6 +173,7 @@
             this.MinimizeBox = false;
             this.Name = "IdentitySetup";
             this.Text = "IdentitySetup";
+            this.Load += new System.EventHandler(this.IdentitySetup_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -102,6 +102,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -124,6 +125,7 @@
     <Compile Include="Core\Data\CoinChain.cs" />
     <Compile Include="Core\Data\Coin\MoneyController.cs" />
     <Compile Include="Core\Data\Coin\Payment.cs" />
+    <Compile Include="Core\Nodes\LocalSafeNode.cs" />
     <Compile Include="Core\Nodes\SuperCoinNode.cs" />
     <Compile Include="Core\Handlers\ClientHandler.cs" />
     <Compile Include="Core\Handlers\DownloadHandler.cs" />
@@ -173,6 +175,7 @@
     <Compile Include="Core\Setup\FirstSetup.Designer.cs">
       <DependentUpon>FirstSetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\Setup\Hash.cs" />
     <Compile Include="Core\Setup\IdentitySetup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +189,7 @@
     <Compile Include="Core\Setup\NetworkSetup.Designer.cs">
       <DependentUpon>NetworkSetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\Setup\SaveIdentity.cs" />
     <Compile Include="Core\Updater\Update.cs" />
     <Compile Include="Core\Updater\UpdateForm.cs">
       <SubType>Form</SubType>
@@ -194,6 +198,7 @@
       <DependentUpon>UpdateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Enums\ConnectionMethod.cs" />
+    <Compile Include="Enums\ProtectionMethod.cs" />
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>

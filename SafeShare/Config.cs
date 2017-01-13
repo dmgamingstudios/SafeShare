@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Xml.XPath;
+using static FuhrerShare.Enums.ProtectionMethod;
 
 namespace FuhrerShare
 {
@@ -17,14 +18,14 @@ namespace FuhrerShare
     {
         private static readonly string SettingsPath = Path.Combine(Application.StartupPath, "config.xml");
         internal static string OTP = "";
-        internal static SafeNode LocalNode;
+        internal static LocalSafeNode LocalNode;
         internal static void SaveLocalNode()
         {
-            File.WriteAllText(Path.Combine(Application.StartupPath, "identities", LocalNode.identity.name + ".sni"), SaveSingle<SafeNode>(LocalNode));
+            File.WriteAllText(Path.Combine(Application.StartupPath, "identities", LocalNode.identity.name + ".sni"), SaveSingle<LocalSafeNode>(LocalNode));
         }
         internal static void LoadLocalNode()
         {
-            LocalNode = LoadSingle<SafeNode>(File.ReadAllText(Path.Combine(Application.StartupPath, "identities", LocalNode.identity.name + ".sni")));
+            LocalNode = LoadSingle<LocalSafeNode>(File.ReadAllText(Path.Combine(Application.StartupPath, "identities", LocalNode.identity.name + ".sni")));
         }
         private static T LoadSingle<T>(string line)
         {
@@ -77,6 +78,17 @@ namespace FuhrerShare
             catch (Exception ex)
             {
                 return "ERR";
+            }
+        }
+        public static PrMethod ProtectMethod
+        {
+            get
+            {
+                return (PrMethod)Enum.Parse(typeof(PrMethod), ReadValueSafe("PrMethod", "low"));
+            }
+            set
+            {
+                WriteValue("PrMethod", value.ToString());
             }
         }
         public static bool UseClear

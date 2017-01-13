@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace FuhrerShare.Core.Nodes
 {
-    internal class SafeNode
+    internal class LocalSafeNode
     {
         internal ConnectionMethod.ConnMethod CM;
         internal bool ConnectionState = false;
@@ -22,18 +22,18 @@ namespace FuhrerShare.Core.Nodes
         internal Identity identity;
         internal SslStream ClientStream;
         RSACryptoServiceProvider csp = null;
-        internal SafeNode(string name, string ip, int port, X509Certificate2 pkey, bool local, ConnectionMethod.ConnMethod CM = ConnectionMethod.ConnMethod.Clear)
+        internal LocalSafeNode(string name, string ip, int port, X509Certificate2 pkey, bool local, string hash, ConnectionMethod.ConnMethod CM = ConnectionMethod.ConnMethod.Clear)
         {
             this.ip = ip;
             this.port = port;
             this.CM = CM;
-            identity = new Identity(pkey, "", name, local);
+            identity = new Identity(pkey, hash, name, local);
         }
-		internal SafeNode(string name, X509Certificate2 pkey, string hiddenid, ConnectionMethod.ConnMethod CM, bool local)
+		internal LocalSafeNode(string name, X509Certificate2 pkey, string hiddenid, ConnectionMethod.ConnMethod CM, bool local, string hash)
         {
             this.hiddenid = hiddenid;
             this.CM = CM;
-            identity = new Identity(pkey, "", name, local);
+            identity = new Identity(pkey, hash, name, local);
         }
         internal string SendNodeMsg(string msg)
         {

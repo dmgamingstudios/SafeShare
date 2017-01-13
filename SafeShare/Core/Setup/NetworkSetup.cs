@@ -8,16 +8,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static FuhrerShare.Enums.ProtectionMethod;
 
 namespace FuhrerShare.Core.Setup
 {
     public partial class NetworkSetup : Form
     {
         ConnectionMethod.ConnMethod CM;
-        internal NetworkSetup(ConnectionMethod.ConnMethod CM)
+        PrMethod PM;
+        internal NetworkSetup(ConnectionMethod.ConnMethod CM, PrMethod PM)
         {
             InitializeComponent();
             this.CM = CM;
+            this.PM = PM;
+            if(PM == PrMethod.custom)
+            {
+                button1.Enabled = true;
+                button2.Enabled = true;
+                button3.Enabled = true;
+            }
             if (CM == ConnectionMethod.ConnMethod.Clear)
                 button1.Enabled = true;
             else if (CM == ConnectionMethod.ConnMethod.I2P)

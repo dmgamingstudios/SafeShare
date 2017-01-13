@@ -9,12 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static FuhrerShare.Enums.ConnectionMethod;
+using static FuhrerShare.Enums.ProtectionMethod;
 
 namespace FuhrerShare.Core.Setup
 {
     public partial class FirstSetup : Form
     {
         ConnMethod CM;
+        PrMethod PM;
         public FirstSetup()
         {
             InitializeComponent();
@@ -62,8 +64,7 @@ namespace FuhrerShare.Core.Setup
         {
             MessageBox.Show("We will first install the root CA certificates in your certificate store, a warning from windows might popup about inserting an untrusted certificate, just click yes to continue importing");
             AddSecuCert.Add();
-
-            NetworkSetup NS = new NetworkSetup(CM);
+            NetworkSetup NS = new NetworkSetup(CM, PM);
             NS.Show();
             Close();
         }
@@ -77,6 +78,7 @@ namespace FuhrerShare.Core.Setup
                 checkBox4.Checked = false;
                 checkBox5.Checked = false;
                 CM = ConnMethod.Clear;
+                PM = PrMethod.low;
                 button1.Enabled = true;
             }
         }
@@ -89,6 +91,7 @@ namespace FuhrerShare.Core.Setup
                 checkBox3.Checked = false;
                 checkBox4.Checked = false;
                 checkBox5.Checked = false;
+                PM = PrMethod.medium;
                 CM = ConnMethod.Clear;
             }
         }
@@ -101,6 +104,7 @@ namespace FuhrerShare.Core.Setup
                 checkBox2.Checked = false;
                 checkBox4.Checked = false;
                 checkBox5.Checked = false;
+                PM = PrMethod.high;
                 CM = ConnMethod.Tor;
             }
         }
@@ -113,6 +117,7 @@ namespace FuhrerShare.Core.Setup
                 checkBox2.Checked = false;
                 checkBox3.Checked = false;
                 checkBox5.Checked = false;
+                PM = PrMethod.paranoid;
                 CM = ConnMethod.I2P;
             }
         }
@@ -128,6 +133,13 @@ namespace FuhrerShare.Core.Setup
                 groupBox2.Visible = true;
                 groupBox3.Visible = true;
                 groupBox4.Visible = true;
+                PM = PrMethod.custom;
+            }
+            else
+            {
+                groupBox2.Visible = false;
+                groupBox3.Visible = false;
+                groupBox4.Visible = false;
             }
         }
 
