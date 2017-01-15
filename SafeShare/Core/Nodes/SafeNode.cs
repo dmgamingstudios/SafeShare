@@ -12,37 +12,38 @@ using System.Threading.Tasks;
 
 namespace FuhrerShare.Core.Nodes
 {
-    internal class SafeNode
+    [Serializable]
+    public class SafeNode
     {
-        internal ConnectionMethod.ConnMethod CM;
-        internal bool ConnectionState = false;
-        internal string ip = null;
-        internal int port = 0;
-        internal string hiddenid = null;
-        internal Identity identity;
-        internal SslStream ClientStream;
+        public ConnectionMethod.ConnMethod CM;
+        public bool ConnectionState = false;
+        public string ip = null;
+        public int port = 0;
+        public string hiddenid = null;
+        public Identity identity;
+        public SslStream ClientStream;
         RSACryptoServiceProvider csp = null;
-        internal SafeNode(string name, string ip, int port, X509Certificate2 pkey, bool local, ConnectionMethod.ConnMethod CM = ConnectionMethod.ConnMethod.Clear)
+        public SafeNode(string name, string ip, int port, X509Certificate2 pkey, bool local, ConnectionMethod.ConnMethod CM = ConnectionMethod.ConnMethod.Clear)
         {
             this.ip = ip;
             this.port = port;
             this.CM = CM;
             identity = new Identity(pkey, "", name, local);
         }
-		internal SafeNode(string name, X509Certificate2 pkey, string hiddenid, ConnectionMethod.ConnMethod CM, bool local)
+		public SafeNode(string name, X509Certificate2 pkey, string hiddenid, ConnectionMethod.ConnMethod CM, bool local)
         {
             this.hiddenid = hiddenid;
             this.CM = CM;
             identity = new Identity(pkey, "", name, local);
         }
-        internal string SendNodeMsg(string msg)
+        public string SendNodeMsg(string msg)
         {
             if(msg.Contains("²"))
             {
                 return "ERR";
             }
             SHA512Managed sha512 = new SHA512Managed();
-            csp = (RSACryptoServiceProvider)Config.LocalNode.identity.PubKey.PrivateKey;
+            csp = (RSACryptoServiceProvider)Config.LocalNode.identity.pfxcert.PrivateKey;
             try
             {
                 byte[] data = Encoding.ASCII.GetBytes(msg);
@@ -56,7 +57,7 @@ namespace FuhrerShare.Core.Nodes
             catch(Exception)
             { return "We had an exception.."; }
         }
-		internal void Connect()
+		public void Connect()
         {
 			if(CM == ConnectionMethod.ConnMethod.I2P && !ConnectionState)
             {
@@ -71,12 +72,12 @@ namespace FuhrerShare.Core.Nodes
 
             }
         }
-		internal void DisConnect()
+		public void DisConnect()
         {
             if (!ConnectionState)
                 return;
         }
-		internal void SendFilePieceRequest(SslStream CurrentOpenStream, File file, string RequestedLength)
+		public void SendFilePieceRequest(SslStream CurrentOpenStream, File file, string RequestedLength)
         {
             if (CurrentOpenStream == null || file == null || RequestedLength == null || ConnectionState)
                 return;

@@ -10,12 +10,13 @@ using System.Windows.Forms;
 
 namespace FuhrerShare.Core.Networking.Clients
 {
-    internal class LocalIdentity
+    [Serializable]
+    public class LocalIdentity
     {
-        internal X509Certificate2 pfxcert;
-        internal string name = "";
-        internal string hash = "";
-        internal LocalIdentity(X509Certificate2 pfxcert, string hash = "unknown", string name = "unknown", bool islocal = false)
+        public X509Certificate2 pfxcert;
+        public string name = "";
+        public string hash = "";
+        public LocalIdentity(X509Certificate2 pfxcert, string hash = "unknown", string name = "unknown", bool islocal = false)
         {
             this.pfxcert = pfxcert;
             this.name = name;

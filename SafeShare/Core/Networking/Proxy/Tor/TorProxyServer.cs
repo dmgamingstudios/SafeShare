@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace FuhrerShare.Core.Networking.Proxy.Tor
 {
-    internal class TorProxyServer
+    public class TorProxyServer
     {
         TorSharpProxy proxy;
-        internal async void StartProxyAsync()
+        public async void StartProxyAsync()
         {
             var settings = new TorSharpSettings
             {
@@ -35,7 +35,7 @@ namespace FuhrerShare.Core.Networking.Proxy.Tor
             var httpClient = new HttpClient(handler);
             await proxy.ConfigureAndStartAsync();
         }
-        internal void StopProxy()
+        public void StopProxy()
         {
             proxy.Stop();
         }

@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace FuhrerShare.Core.Nodes
 {
-    internal class SuperCoinNode
+    [Serializable]
+    public class SuperCoinNode
     {
-        internal string name = "donttrustme";
-        internal SuperCoinNode(X509Certificate2 SuperCert, string XmlIdFile)
+        public string name = "donttrustme";
+        public SuperCoinNode(X509Certificate2 SuperCert, string XmlIdFile)
         {
 
         }

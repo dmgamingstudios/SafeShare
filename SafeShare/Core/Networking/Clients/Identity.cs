@@ -10,12 +10,13 @@ using System.Windows.Forms;
 
 namespace FuhrerShare.Core.Networking.Clients
 {
-    internal class Identity
+    [Serializable]
+    public class Identity
     {
-        internal X509Certificate2 PubKey;
-        internal string name = "";
-        internal string hash = "";
-        internal Identity(X509Certificate2 PubKey, string hash = "Unknown", string name = "unknown", bool islocal = false)
+        public X509Certificate2 PubKey;
+        public string name = "";
+        public string hash = "";
+        public Identity(X509Certificate2 PubKey, string hash = "Unknown", string name = "unknown", bool islocal = false)
         {
             this.PubKey = PubKey;
             this.name = name;

@@ -16,7 +16,7 @@ namespace FuhrerShare.Core.Setup
     {
         ConnectionMethod.ConnMethod CM;
         PrMethod PM;
-        internal NetworkSetup(ConnectionMethod.ConnMethod CM, PrMethod PM)
+        public NetworkSetup(ConnectionMethod.ConnMethod CM, PrMethod PM)
         {
             InitializeComponent();
             this.CM = CM;

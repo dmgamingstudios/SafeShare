@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace FuhrerShare.Core.Setup
 {
-    internal class Hash
+    public class Hash
     {
-        internal string Create_Hash_For_Identity(string name, string privkey)
+        public string Create_Hash_For_Identity(string name, string privkey)
         {
             string result = null;
             using (SHA512Managed sha512 = new SHA512Managed())

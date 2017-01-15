@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace FuhrerShare.Core.Data
 {
-    internal class CoinChain
+    public class CoinChain
     {
-        internal readonly string CoinChainFile = Application.StartupPath + "\\chain.dat";
+        public readonly string CoinChainFile = Application.StartupPath + "\\chain.dat";
         
     }
 }

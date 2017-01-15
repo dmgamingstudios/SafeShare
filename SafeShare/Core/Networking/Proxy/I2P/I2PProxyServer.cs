@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace FuhrerShare.Core.Networking.Proxy.I2P
 {
-    internal class I2PProxyServer
+    public class I2PProxyServer
     {
-        internal void CreateI2PConnection2Node(SafeNode node, out SslStream ssl)
+        public void CreateI2PConnection2Node(SafeNode node, out SslStream ssl)
         {
             I2PSocketManager manager = I2PSocketManagerFactory.createManager();
             Destination D = new Destination(node.hiddenid);

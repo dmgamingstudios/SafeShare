@@ -65,7 +65,7 @@ namespace Knapcode.TorSharp
         {
             if (!_initialized)
             {
-                await ConfigureAndStartInternalAsync().ConfigureAwait(false);
+                await ConfigureAndStartpublicAsync().ConfigureAwait(false);
                 _initialized = true;
             }
         }
@@ -96,7 +96,7 @@ namespace Knapcode.TorSharp
             };
         }
 
-        private async Task ConfigureAndStartInternalAsync()
+        private async Task ConfigureAndStartpublicAsync()
         {
             _settings.ZippedToolsDirectory = GetAbsoluteCreate(_settings.ZippedToolsDirectory);
             _settings.ExtractedToolsDirectory = GetAbsoluteCreate(_settings.ExtractedToolsDirectory);

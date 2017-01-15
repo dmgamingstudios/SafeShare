@@ -20,7 +20,7 @@ using System.Security.Authentication;
 
 namespace FuhrerShare.Core.Networking
 {
-    internal class ProxyEngine
+    public class ProxyEngine
     {
     public enum ProxyType
     {
@@ -555,9 +555,9 @@ namespace FuhrerShare.Core.Networking
         {
         }
     }
-    internal static class Utils
+    public static class Utils
     {
-        internal static string GetHost(TcpClient client)
+        public static string GetHost(TcpClient client)
         {
             if (client == null)
                 throw new ArgumentNullException("client");
@@ -570,7 +570,7 @@ namespace FuhrerShare.Core.Networking
             { };
             return host;
         }
-        internal static string GetPort(TcpClient client)
+        public static string GetPort(TcpClient client)
         {
             if (client == null)
                 throw new ArgumentNullException("client");
@@ -1073,7 +1073,7 @@ namespace FuhrerShare.Core.Networking
             UnsupportedMediaType = 415,
             RequestedRangeNotSatisfied = 416,
             ExpectationFailed = 417,
-            InternalServerError = 500,
+            publicServerError = 500,
             NotImplemented = 501,
             BadGateway = 502,
             ServiceUnavailable = 503,

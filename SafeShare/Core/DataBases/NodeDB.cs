@@ -12,10 +12,10 @@ using System.Collections;
 
 namespace FuhrerShare.Core.DataBases
 {
-    internal class NodeDB
+    public class NodeDB
     {
-        internal static Hashtable Nodes = new Hashtable();
-        internal NodeDB()
+        public static Hashtable Nodes = new Hashtable();
+        public NodeDB()
         {
             if (File.Exists(Application.StartupPath + "\\nodes.dat") && Nodes.Count == 0)
             {
@@ -31,7 +31,7 @@ namespace FuhrerShare.Core.DataBases
                 Nodes.Add(cloadednode.identity.name, cloadednode);
             }
         }
-        internal void Save()
+        public void Save()
         {
             string[] SerializedNodes = null;
             int s = 0;

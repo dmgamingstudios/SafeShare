@@ -29,7 +29,7 @@ namespace FuhrerShare
             //if (!File.Exists(Application.StartupPath + "\\nodes.dat"))
                // BeginDownloadNodeFile();
         }
-        internal void BeginDownloadNodeFile()
+        public void BeginDownloadNodeFile()
         {
             if(Config.UseClear)
             {

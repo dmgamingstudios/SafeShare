@@ -8,10 +8,10 @@ using System.Windows.Forms;
 
 namespace FuhrerShare.Core.DataBases
 {
-    internal class CoinNodeDB
+    public class CoinNodeDB
     {
-        internal static string[] CoindNodes;
-        internal CoinNodeDB()
+        public static string[] CoindNodes;
+        public CoinNodeDB()
         {
             string NodeFileData = File.ReadAllText(Application.StartupPath + "\\coinnodes.dat");
 

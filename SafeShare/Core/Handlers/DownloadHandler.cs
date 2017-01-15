@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 
 namespace FuhrerShare.Core.Handlers
 {
-    internal class DownloadHandler
+    public class DownloadHandler
     {
-        internal File file;
-        internal SafeNode[] AvailableNodes;
-        internal SafeNode[] UseableNodes;
-        internal DownloadHandler(File file, SafeNode[] AvailableNodes)
+        public File file;
+        public SafeNode[] AvailableNodes;
+        public SafeNode[] UseableNodes;
+        public DownloadHandler(File file, SafeNode[] AvailableNodes)
         {
             this.file = file;
             this.AvailableNodes = AvailableNodes;
         }
-        internal void StartDownload()
+        public void StartDownload()
         {
             int i = 0;
             foreach(SafeNode node in AvailableNodes)

@@ -20,9 +20,9 @@ using static FuhrerShare.Core.Networking.ProxyEngine;
 
 namespace FuhrerShare.Core.Setup
 {
-    internal class KeyRequest
+    public class KeyRequest
     {
-        internal X509Certificate2 Request(string name, string pass, bool canuse_clear = true, bool canuse_tor = false, bool canuse_i2p = false)
+        public X509Certificate2 Request(string name, string pass, bool canuse_clear = true, bool canuse_tor = false, bool canuse_i2p = false)
         {
             TcpClient client = new TcpClient();
             Socks5ProxyClient SPC;

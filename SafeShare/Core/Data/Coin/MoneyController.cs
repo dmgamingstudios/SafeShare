@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace FuhrerShare.Core.Data.Coin
 {
-    internal class MoneyController
+    public class MoneyController
     {
-        internal string SuperVerifyPayment(SuperCoinNode me, Payment payment)
+        public string SuperVerifyPayment(SuperCoinNode me, Payment payment)
         {
             string[] ChainData = File.ReadAllLines(new CoinChain().CoinChainFile);
             string[] results = Array.FindAll(ChainData, s => s.Contains(payment.payer));

@@ -8,22 +8,23 @@ using System.Threading.Tasks;
 
 namespace FuhrerShare.Core.Nodes
 {
-    internal class SuperNode
+    [Serializable]
+    public class SuperNode
     {
-        internal string name = "";
-        internal ConnectionMethod.ConnMethod CM;
-        internal bool Connected = false;
-        internal SslStream SuperNodeStream;
-        internal SuperNode(string name, ConnectionMethod.ConnMethod CM)
+        public string name = "";
+        public ConnectionMethod.ConnMethod CM;
+        public bool Connected = false;
+        public SslStream SuperNodeStream;
+        public SuperNode(string name, ConnectionMethod.ConnMethod CM)
         {
             this.name = name;
             this.CM = CM;
         }
-        internal void Connect()
+        public void Connect()
         {
 
         }
-        internal string SendSuperNodeMsg(string msg)
+        public string SendSuperNodeMsg(string msg)
         {
             if (!Connected)
                 return "ERR";

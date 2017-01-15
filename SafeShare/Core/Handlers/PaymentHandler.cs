@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace FuhrerShare.Core.Handlers
 {
-    internal class PaymentHandler
+    public class PaymentHandler
     {
-        internal void VerifyPayment()
+        public void VerifyPayment()
         {
 
         }
-        internal void CreatePayment()
+        public void CreatePayment()
         {
 
         }

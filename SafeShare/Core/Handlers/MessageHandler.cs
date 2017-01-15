@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace FuhrerShare.Core.Handlers
 {
-    internal class MessageHandler
+    public class MessageHandler
     {
-        internal void BroadcastHandler(string Message)
+        public void BroadcastHandler(string Message)
         {
 
         }
-        internal string HandleIncomingMsgFromNode(string msgwsig, SafeNode node)
+        public string HandleIncomingMsgFromNode(string msgwsig, SafeNode node)
         {
             string[] msg = msgwsig.Split('²');
             if (!new SignatureVerifier().Verify(msg[1], Convert.FromBase64String(msg[0]), node))

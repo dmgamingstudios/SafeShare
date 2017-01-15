@@ -11,16 +11,16 @@ using System.Threading.Tasks;
 
 namespace FuhrerShare.Core.Handlers
 {
-    internal class ClientHandler
+    public class ClientHandler
     {
         private byte[] bytes = new byte[5];
-        internal bool die = false;
-        internal SafeNode node;
-        internal ClientHandler(SafeNode node)
+        public bool die = false;
+        public SafeNode node;
+        public ClientHandler(SafeNode node)
         {
             this.node = node;
         }
-        internal void HandleNodeMessages()
+        public void HandleNodeMessages()
         {
             SslStream Ssl = node.ClientStream;
             while (!die)
@@ -36,7 +36,7 @@ namespace FuhrerShare.Core.Handlers
                 Ssl.Write(Encoding.ASCII.GetBytes(ourResponse));
             }
         }
-        internal void HandleNodeKeepAlive()
+        public void HandleNodeKeepAlive()
         {
             SslStream Ssl = node.ClientStream;
             while(!die)

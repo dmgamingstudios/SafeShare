@@ -14,11 +14,11 @@ using static FuhrerShare.Enums.ProtectionMethod;
 
 namespace FuhrerShare
 {
-    internal static class Config
+    public static class Config
     {
         private static readonly string SettingsPath = Path.Combine(Application.StartupPath, "config.xml");
-        internal static string OTP = "";
-        internal static LocalSafeNode LocalNode;
+        public static string OTP = "";
+        public static LocalSafeNode LocalNode;
         private static T LoadSingle<T>(string line)
         {
             if (string.IsNullOrEmpty(line)) { return default(T); }

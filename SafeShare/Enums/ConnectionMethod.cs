@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace FuhrerShare.Enums
 {
-    internal class ConnectionMethod
+    public class ConnectionMethod
     {
-        internal enum ConnMethod
+        public enum ConnMethod
         {
             Clear,
             Tor,

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace FuhrerShare.Core.DataBases
 {
-    internal static class SuperNodeDB
+    public static class SuperNodeDB
     {
-        internal static readonly string[] I2PSuperNodes = { };
-        internal static readonly string[] TorSuperNodes = { };
-        internal static readonly string[] ClearSuperNodes = { };
+        public static readonly string[] I2PSuperNodes = { };
+        public static readonly string[] TorSuperNodes = { };
+        public static readonly string[] ClearSuperNodes = { };
     }
 }

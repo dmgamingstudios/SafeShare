@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace FuhrerShare.Core.Security
 {
-    internal class SignatureVerifier
+    public class SignatureVerifier
     {
-        internal bool Verify(string msg, byte[] signature, SafeNode node)
+        public bool Verify(string msg, byte[] signature, SafeNode node)
         {
             X509Certificate2 cert = node.identity.PubKey;
             RSACryptoServiceProvider csp = (RSACryptoServiceProvider)cert.PublicKey.Key;

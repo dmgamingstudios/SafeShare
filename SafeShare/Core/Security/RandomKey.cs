@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace FuhrerShare.Core.Security
 {
-    internal class RandomKey
+    public class RandomKey
     {
-        internal void GenerateOTP()
+        public void GenerateOTP()
         {
             Config.OTP = System.Web.Security.Membership.GeneratePassword(200, 10);
         }

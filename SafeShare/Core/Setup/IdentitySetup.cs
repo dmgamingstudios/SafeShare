@@ -32,7 +32,7 @@ namespace FuhrerShare.Core.Setup
         string pub = null;
         string ihash = null;
         string csr = null;
-        internal X509Certificate2 PfxCert = null;
+        public X509Certificate2 PfxCert = null;
         public IdentitySetup(bool tor, bool clear, bool i2p)
         {
             InitializeComponent();
@@ -40,7 +40,7 @@ namespace FuhrerShare.Core.Setup
             this.clear = clear;
             this.i2p = i2p;
         }
-        internal void GenerateCsr(out string publicKey, out string privateKey, out string csr, string name, string pass)
+        public void GenerateCsr(out string publicKey, out string privateKey, out string csr, string name, string pass)
         {
             var rsaKeyPairGenerator = new RsaKeyPairGenerator();
             var genParam = new RsaKeyGenerationParameters(BigInteger.ValueOf(0x10001), new SecureRandom(), 4096, 128);
@@ -63,7 +63,7 @@ namespace FuhrerShare.Core.Setup
             publicKey = pair.Public.ToString();
             ihash = idhash;
         }
-        internal void GeneratePfx(string pubkey, string privkey, string pass)
+        public void GeneratePfx(string pubkey, string privkey, string pass)
         {
             byte[] certBuffer = Helpers.GetBytesFromPEM(pubkey, PemStringType.Certificate);
             byte[] keyBuffer = Helpers.GetBytesFromPEM(privkey, PemStringType.RsaPrivateKey);
@@ -86,6 +86,7 @@ namespace FuhrerShare.Core.Setup
 
         private void button2_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(ihash);
             Config.LocalNode = new Nodes.LocalSafeNode(textBox1.Text, "127.0.0.1", 5248, PfxCert, true, ihash);
             Config.SetupDone = true;
             new SaveIdentity(Config.LocalNode);
@@ -191,7 +192,7 @@ namespace FuhrerShare.Core.Setup
             }
         }
     }
-    internal class RSAParameterTraits
+    public class RSAParameterTraits
     {
         public RSAParameterTraits(int modulusLengthInBits)
         {

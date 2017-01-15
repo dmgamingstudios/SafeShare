@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace FuhrerShare.Core.Data.Coin
 {
-    internal class Payment
+    public class Payment
     {
-        internal string payer = null;
-        internal string receiver = null;
-        internal string paymentID = null;
-        internal Int32 Amount = 0;
-        internal Payment()
+        public string payer = null;
+        public string receiver = null;
+        public string paymentID = null;
+        public Int32 Amount = 0;
+        public Payment()
         {
 
         }

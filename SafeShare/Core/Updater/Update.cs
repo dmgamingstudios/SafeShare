@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FuhrerShare.Core.Updater
 {
-    internal class Update
+    public class Update
     {
-        internal void Updater()
+        public void Updater()
         {
             if(GitVersion() <= CurrentVersion())
                 return;

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace FuhrerShare.Enums
 {
-    internal class ProtectionMethod
+    public class ProtectionMethod
     {
-        internal enum PrMethod
+        public enum PrMethod
         {
             low,
             medium,

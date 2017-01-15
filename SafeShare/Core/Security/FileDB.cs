@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace FuhrerShare.Core.Security
 {
-    internal class FileDB
+    public class FileDB
     {
-        internal void WriteFileStreamCrypt()
+        public void WriteFileStreamCrypt()
         {
             try
             {
