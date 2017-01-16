@@ -1,5 +1,4 @@
 ﻿using FuhrerShare.Core.Networking.Clients;
-using FuhrerShare.Core.Networking.ClientStreams;
 using FuhrerShare.Core.Security;
 using FuhrerShare.Enums;
 using System;

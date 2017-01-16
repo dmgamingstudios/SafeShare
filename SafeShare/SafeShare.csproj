@@ -125,7 +125,6 @@
     <Compile Include="Core\Data\CoinChain.cs" />
     <Compile Include="Core\Data\Coin\MoneyController.cs" />
     <Compile Include="Core\Data\Coin\Payment.cs" />
-    <Compile Include="Core\Networking\ClientStreams\SafeNodeStream.cs" />
     <Compile Include="Core\Networking\Clients\LocalIdentity.cs" />
     <Compile Include="Core\Nodes\LocalSafeNode.cs" />
     <Compile Include="Core\Nodes\SuperCoinNode.cs" />

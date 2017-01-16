@@ -19,57 +19,30 @@ namespace FuhrerShare
         private static readonly string SettingsPath = Path.Combine(Application.StartupPath, "config.xml");
         public static string OTP = "";
         public static LocalSafeNode LocalNode;
-        private static T LoadSingle<T>(string line)
+        public static LocalSafeNode LoadLocal(LocalSafeNode node)
         {
-            if (string.IsNullOrEmpty(line)) { return default(T); }
-            T objectOut = default(T);
             try
             {
-                XmlDocument xmlDocument = new XmlDocument();
-                xmlDocument.LoadXml(line);
-                string xmlString = xmlDocument.OuterXml;
-                using (StringReader read = new StringReader(xmlString))
-                {
-                    Type outType = typeof(T);
-                    XmlSerializer serializer = new XmlSerializer(outType);
-                    using (XmlReader reader = new XmlTextReader(read))
-                    {
-                        objectOut = (T)serializer.Deserialize(reader);
-                        reader.Close();
-                    }
-                    read.Close();
-                }
+
             }
             catch (Exception ex)
             {
 
             }
-            return objectOut;
         }
-        private static string SaveSingle<T>(T serializableObject)
+        public static void SaveLocal(LocalSafeNode node)
         {
-            if (serializableObject == null) { return ""; }
             try
             {
-                XmlDocument xmlDocument = new XmlDocument();
-                XmlSerializer serializer = new XmlSerializer(serializableObject.GetType());
-                using (MemoryStream stream = new MemoryStream())
+                string file = Application.StartupPath + "\\identities\\" + node.identity.name;
+                using (StreamWriter sw = new StreamWriter(file))
                 {
-                    serializer.Serialize(stream, serializableObject);
-                    stream.Position = 0;
-                    xmlDocument.Load(stream);
-                    using (var stringWriter = new StringWriter())
-                    using (var xmlTextWriter = XmlWriter.Create(stringWriter))
-                    {
-                        xmlDocument.WriteTo(xmlTextWriter);
-                        xmlTextWriter.Flush();
-                        return stringWriter.GetStringBuilder().ToString();
-                    }
+                    string filedata = node.identity.hash + "|" + node.identity.name + "|" + node.hiddenid + "|" + node.ip + "|" + node.port + "|" + Convert.ToBase64String(node.identity.PubKey.Export(System.Security.Cryptography.X509Certificates.X509ContentType.Pkcs12));
+                    sw.WriteLine(filedata);
                 }
             }
             catch (Exception ex)
             {
-                return "ERR";
             }
         }
         public static PrMethod ProtectMethod

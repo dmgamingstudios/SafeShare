@@ -62,6 +62,7 @@ namespace FuhrerShare.Core.Setup
             csr = Convert.ToBase64String(pkcs10CertificationRequest.GetEncoded());
             publicKey = pair.Public.ToString();
             ihash = idhash;
+            GeneratePfx(publicKey, privateKey, pass);
         }
         public void GeneratePfx(string pubkey, string privkey, string pass)
         {
@@ -86,7 +87,6 @@ namespace FuhrerShare.Core.Setup
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(ihash);
             Config.LocalNode = new Nodes.LocalSafeNode(textBox1.Text, "127.0.0.1", 5248, PfxCert, true, ihash);
             Config.SetupDone = true;
             new SaveIdentity(Config.LocalNode);

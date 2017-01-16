@@ -20,23 +20,21 @@ namespace FuhrerShare.Core.Setup
             if (!Directory.Exists(SaveDirectory))
                 Directory.CreateDirectory(SaveDirectory);
             string file = SaveDirectory + "\\" + localnode.identity.name;
-            string filedata = "testdata";
-            string nodedataxml = null;
+            string filedata = null;
             try
             {
-                //filedata = Convert.ToBase64String(localnode.identity.pfxcert.Export(X509ContentType.Pkcs12));
-                using (MemoryStream stream = new MemoryStream())
-                {
-                    var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                    binaryFormatter.Serialize(stream, localnode);
-                }
+                filedata = Convert.ToBase64String(localnode.identity.pfxcert.Export(X509ContentType.Pkcs12));
             }
             catch (Exception ex)
             {}
             using (StreamWriter sw = new StreamWriter(file))
             {
-                sw.WriteLine(nodedataxml);
                 sw.WriteLine(filedata);
+                sw.WriteLine(localnode.identity.hash);
+                sw.WriteLine(localnode.identity.name);
+                sw.WriteLine(localnode.hiddenid);
+                sw.WriteLine(localnode.ip);
+                sw.WriteLine(localnode.port);
             }
         }
     }
