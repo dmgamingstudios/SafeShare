@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FuhrerShare.Core.Security
+namespace FuhrerShare.Core.DataBases
 {
     public class FileDB
     {

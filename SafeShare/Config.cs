@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,15 +20,24 @@ namespace FuhrerShare
         private static readonly string SettingsPath = Path.Combine(Application.StartupPath, "config.xml");
         public static string OTP = "";
         public static LocalSafeNode LocalNode;
-        public static LocalSafeNode LoadLocal(LocalSafeNode node)
+        public static void LoadLocal(LocalSafeNode node)
         {
             try
             {
-
+                foreach(string File in Directory.GetFiles(Application.StartupPath + "\\identities\\"))
+                {
+                    string nodedata = null;
+                    using (StreamReader rw = new StreamReader(File))
+                    {
+                        nodedata = rw.ReadLine();
+                    }
+                    string[] rawnodedata = nodedata.Split('|');
+                    LocalNode = new LocalSafeNode(rawnodedata[1], rawnodedata[3], int.Parse(rawnodedata[4]), new X509Certificate2(Convert.FromBase64String(rawnodedata[5])), true, rawnodedata[0]);
+                }
             }
             catch (Exception ex)
             {
-
+                
             }
         }
         public static void SaveLocal(LocalSafeNode node)
@@ -37,7 +47,7 @@ namespace FuhrerShare
                 string file = Application.StartupPath + "\\identities\\" + node.identity.name;
                 using (StreamWriter sw = new StreamWriter(file))
                 {
-                    string filedata = node.identity.hash + "|" + node.identity.name + "|" + node.hiddenid + "|" + node.ip + "|" + node.port + "|" + Convert.ToBase64String(node.identity.PubKey.Export(System.Security.Cryptography.X509Certificates.X509ContentType.Pkcs12));
+                    string filedata = node.identity.hash + "|" + node.identity.name + "|" + node.hiddenid + "|" + node.ip + "|" + node.port + "|" + Convert.ToBase64String(node.identity.pfxcert.Export(System.Security.Cryptography.X509Certificates.X509ContentType.Pkcs12));
                     sw.WriteLine(filedata);
                 }
             }

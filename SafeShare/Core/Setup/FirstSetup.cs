@@ -93,6 +93,7 @@ namespace FuhrerShare.Core.Setup
                 checkBox5.Checked = false;
                 PM = PrMethod.medium;
                 CM = ConnMethod.Clear;
+                button1.Enabled = true;
             }
         }
 
@@ -106,6 +107,7 @@ namespace FuhrerShare.Core.Setup
                 checkBox5.Checked = false;
                 PM = PrMethod.high;
                 CM = ConnMethod.Tor;
+                button1.Enabled = true;
             }
         }
 
@@ -119,6 +121,7 @@ namespace FuhrerShare.Core.Setup
                 checkBox5.Checked = false;
                 PM = PrMethod.paranoid;
                 CM = ConnMethod.I2P;
+                button1.Enabled = true;
             }
         }
 
@@ -134,6 +137,7 @@ namespace FuhrerShare.Core.Setup
                 groupBox3.Visible = true;
                 groupBox4.Visible = true;
                 PM = PrMethod.custom;
+                button1.Enabled = true;
             }
             else
             {

@@ -166,7 +166,7 @@
     <Compile Include="Core\Networking\Proxy\Tor\Data\TorSharpToolFetcher.cs" />
     <Compile Include="Core\Networking\Proxy\Tor\TorProxyServer.cs" />
     <Compile Include="Core\Nodes\SuperNode.cs" />
-    <Compile Include="Core\Security\FileDB.cs" />
+    <Compile Include="Core\DataBases\FileDB.cs" />
     <Compile Include="Core\Security\File.cs" />
     <Compile Include="Core\Security\RandomKey.cs" />
     <Compile Include="Core\Security\SignatureVerifier.cs" />
