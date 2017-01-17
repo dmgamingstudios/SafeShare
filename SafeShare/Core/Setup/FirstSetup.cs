@@ -62,9 +62,25 @@ namespace FuhrerShare.Core.Setup
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("We will first install the root CA certificates in your certificate store, a warning from windows might popup about inserting an untrusted certificate, just click yes to continue importing");
+            MessageBox.Show("We will first install the root CA certificates from valid SuperNodes in your certificate store, a warning from windows might popup about inserting an untrusted certificate, just click yes to continue importing and after that you need to specify the path to gpg2.exe");
             AddSecuCert.Add();
+            if (textBox1.Text != "")
+            {
+                if (textBox1.Text == textBox2.Text)
+                    Config.UserPass = textBox1.Text;
+                else
+                {
+                    MessageBox.Show("Passwords dont match");
+                    return;
+                }
+            }
             NetworkSetup NS = new NetworkSetup(CM, PM);
+            openFileDialog1.Filter = "gpg2.exe";
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK && openFileDialog1.CheckFileExists)
+            {
+                Config.Gpg2exe = openFileDialog1.FileName;
+            }
             NS.Show();
             Close();
         }
@@ -150,6 +166,63 @@ namespace FuhrerShare.Core.Setup
         private void FirstSetup_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBox1.SelectedText == "Use")
+            {
+                Config.EnforceSSL = false;
+            }
+            else if(comboBox1.SelectedText == "Require")
+            {
+                Config.EnforceSSL = true;
+            }
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox2.SelectedText == "Dont verify")
+            {
+                Config.VerifyIdentities = "Dont verify";
+            }
+            else if (comboBox2.SelectedText == "Verify")
+            {
+                Config.VerifyIdentities = "Verify";
+            }
+            else if (comboBox2.SelectedText == "Verify or blacklist")
+            {
+                Config.VerifyIdentities = "Verify or blacklist";
+            }
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedText == "Delete on shutdown(try)")
+            {
+                Config.DeleteFilesOnShutdown = true;
+            }
+            else if (comboBox1.SelectedText == "Keep Files")
+            {
+                Config.DeleteFilesOnShutdown = false;
+            }
+        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedText == "Keep")
+            {
+                Config.KeepChatHistory = true;
+            }
+            else if (comboBox1.SelectedText == "OTR")
+            {
+                Config.KeepChatHistory = false;
+            }
+            else if (comboBox1.SelectedText == "OTR & Encrypt")
+            {
+                Config.KeepChatHistory = false;
+                Config.EncryptChat = true;
+            }
         }
     }
 }

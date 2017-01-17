@@ -95,6 +95,9 @@
     <Reference Include="mstreaming">
       <HintPath>..\3rd Party Dll's\mstreaming.dll</HintPath>
     </Reference>
+    <Reference Include="starksoft.aspen, Version=1.1.0.0, Culture=neutral, PublicKeyToken=56b8923a24d03eb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\starksoft.aspen.1.1.0\lib\net40\starksoft.aspen.dll</HintPath>
+    </Reference>
     <Reference Include="streaming">
       <HintPath>..\3rd Party Dll's\streaming.dll</HintPath>
     </Reference>
@@ -168,6 +171,7 @@
     <Compile Include="Core\Nodes\SuperNode.cs" />
     <Compile Include="Core\DataBases\FileDB.cs" />
     <Compile Include="Core\Security\File.cs" />
+    <Compile Include="Core\Security\GPG\Keys.cs" />
     <Compile Include="Core\Security\RandomKey.cs" />
     <Compile Include="Core\Security\SignatureVerifier.cs" />
     <Compile Include="Core\Setup\FirstSetup.cs">
@@ -190,6 +194,7 @@
     <Compile Include="Core\Setup\NetworkSetup.Designer.cs">
       <DependentUpon>NetworkSetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\Setup\PrMethod_Settings.cs" />
     <Compile Include="Core\Setup\SaveIdentity.cs" />
     <Compile Include="Core\Updater\Update.cs" />
     <Compile Include="Core\Updater\UpdateForm.cs">
@@ -264,5 +269,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

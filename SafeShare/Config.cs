@@ -55,6 +55,17 @@ namespace FuhrerShare
             {
             }
         }
+        public static string Gpg2exe
+        {
+            get
+            {
+                return ReadValueSafe("gpg2exe", "");
+            }
+            set
+            {
+                WriteValue("gpg2exe", value.ToString());
+            }
+        }
         public static PrMethod ProtectMethod
         {
             get
@@ -108,6 +119,72 @@ namespace FuhrerShare
             set
             {
                 WriteValue("UseTor", value.ToString());
+            }
+        }
+        public static bool UseOTP
+        {
+            get
+            {
+                return bool.Parse(ReadValueSafe("UseOTP", "false"));
+            }
+            set
+            {
+                WriteValue("UseOTP", value.ToString());
+            }
+        }
+        public static bool DeleteFilesOnShutdown
+        {
+            get
+            {
+                return bool.Parse(ReadValueSafe("DeleteFilesOnShutdown", "false"));
+            }
+            set
+            {
+                WriteValue("DeleteFilesOnShutdown", value.ToString());
+            }
+        }
+        public static bool EncryptChat
+        {
+            get
+            {
+                return bool.Parse(ReadValueSafe("EncryptChat", "false"));
+            }
+            set
+            {
+                WriteValue("EncryptChat", value.ToString());
+            }
+        }
+        public static bool KeepChatHistory
+        {
+            get
+            {
+                return bool.Parse(ReadValueSafe("KeepChatHistory", "false"));
+            }
+            set
+            {
+                WriteValue("KeepChatHistory", value.ToString());
+            }
+        }
+        public static string VerifyIdentities
+        {
+            get
+            {
+                return ReadValueSafe("VerifyIdentities", "not");
+            }
+            set
+            {
+                WriteValue("VerifyIdentities", value.ToString());
+            }
+        }
+        public static bool EnforceSSL
+        {
+            get
+            {
+                return bool.Parse(ReadValueSafe("EnforceSSL", "false"));
+            }
+            set
+            {
+                WriteValue("EnforceSSL", value.ToString());
             }
         }
         public static string UserPass

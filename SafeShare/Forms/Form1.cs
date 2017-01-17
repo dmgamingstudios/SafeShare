@@ -26,6 +26,7 @@ namespace FuhrerShare
                 FirstSetup FS = new FirstSetup();
                 FS.ShowDialog();
             }
+            Hide();
             //if (!File.Exists(Application.StartupPath + "\\nodes.dat"))
                // BeginDownloadNodeFile();
         }
