@@ -143,6 +143,17 @@ namespace FuhrerShare
                 WriteValue("DeleteFilesOnShutdown", value.ToString());
             }
         }
+        public static int SafeNodeListenerPort
+        {
+            get
+            {
+                return int.Parse(ReadValueSafe("SafeNodeListenerPort", "666"));
+            }
+            set
+            {
+                WriteValue("SafeNodeListenerPort", value.ToString());
+            }
+        }
         public static bool EncryptChat
         {
             get

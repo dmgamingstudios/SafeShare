@@ -128,7 +128,10 @@
     <Compile Include="Core\Data\CoinChain.cs" />
     <Compile Include="Core\Data\Coin\MoneyController.cs" />
     <Compile Include="Core\Data\Coin\Payment.cs" />
+    <Compile Include="Core\Handlers\NewClientHandler.cs" />
+    <Compile Include="Core\Handlers\PluginHandler.cs" />
     <Compile Include="Core\Networking\Clients\LocalIdentity.cs" />
+    <Compile Include="Core\Networking\Clients\RequestNewNodes.cs" />
     <Compile Include="Core\Nodes\LocalSafeNode.cs" />
     <Compile Include="Core\Nodes\SuperCoinNode.cs" />
     <Compile Include="Core\Handlers\ClientHandler.cs" />
@@ -217,6 +220,7 @@
     <Compile Include="Forms\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Listeners\SafeNodeListener.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Core\Setup\FirstSetup.resx">
@@ -269,6 +273,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Core\Plugins\Installer\" />
+    <Folder Include="Core\Plugins\Loader\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

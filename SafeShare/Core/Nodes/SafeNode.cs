@@ -4,7 +4,9 @@ using FuhrerShare.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Security;
+using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -21,8 +23,11 @@ namespace FuhrerShare.Core.Nodes
         public int port = 0;
         public string hiddenid = null;
         public Identity identity;
+        public TcpClient _client;
         public SslStream ClientStream;
         RSACryptoServiceProvider csp = null;
+        private X509CertificateCollection col = new X509CertificateCollection();
+
         public SafeNode(string name, string ip, int port, X509Certificate2 pkey, bool local, ConnectionMethod.ConnMethod CM = ConnectionMethod.ConnMethod.Clear)
         {
             this.ip = ip;
@@ -59,20 +64,40 @@ namespace FuhrerShare.Core.Nodes
         }
 		public void Connect()
         {
+            col.Add((X509Certificate)Config.LocalNode.identity.pfxcert);
+            NetworkStream _unsecure;
 			if(CM == ConnectionMethod.ConnMethod.I2P && !ConnectionState)
             {
 
             }
 			else if(CM == ConnectionMethod.ConnMethod.Clear && !ConnectionState)
             {
-
+                _client.Connect(IPAddress.Parse(ip), port);
             }
 			else if(CM == ConnectionMethod.ConnMethod.Tor && !ConnectionState)
             {
 
             }
+            _unsecure = _client.GetStream();
+            byte[] rmsg = new byte[2048];
+            _unsecure.Read(rmsg, 0, rmsg.Length);
+            byte[] smsg = Encoding.ASCII.GetBytes("");
+            _unsecure.Write(smsg, 0, smsg.Length);
+            ClientStream = new SslStream(_unsecure, false, new RemoteCertificateValidationCallback(ValCallBack), new LocalCertificateSelectionCallback(LocalCertSel));
+            ClientStream.AuthenticateAsClient(Config.LocalNode.identity.hash, col, System.Security.Authentication.SslProtocols.Tls12, false);
         }
-		public void DisConnect()
+
+        private X509Certificate LocalCertSel(object sender, string targetHost, X509CertificateCollection localCertificates, X509Certificate remoteCertificate, string[] acceptableIssuers)
+        {
+            return (X509Certificate)Config.LocalNode.identity.pfxcert;
+        }
+
+        private bool ValCallBack(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        {
+            return true;
+        }
+
+        public void DisConnect()
         {
             if (!ConnectionState)
                 return;
