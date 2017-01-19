@@ -21,26 +21,6 @@ namespace FuhrerShare
         private static readonly string SettingsPath = Path.Combine(Application.StartupPath, "config.xml");
         public static string OTP = "";
         public static LocalSafeNode LocalNode;
-        public static void LoadLocal(LocalSafeNode node)
-        {
-            try
-            {
-                foreach (string File in Directory.GetFiles(Application.StartupPath + "\\identities\\"))
-                {
-                    string nodedata = null;
-                    using (StreamReader rw = new StreamReader(File))
-                    {
-                        nodedata = rw.ReadLine();
-                    }
-                    string[] rawnodedata = nodedata.Split('|');
-                    LocalNode = new LocalSafeNode(rawnodedata[1], rawnodedata[3], int.Parse(rawnodedata[4]), new X509Certificate2(Convert.FromBase64String(rawnodedata[5])), true, rawnodedata[0]);
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
         public static string Gpg2exe
         {
             get
