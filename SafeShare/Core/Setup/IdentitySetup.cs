@@ -43,7 +43,7 @@ namespace FuhrerShare.Core.Setup
         public void GenerateCsr(out string publicKey, out string privateKey, out string csr, string name, string pass)
         {
             var rsaKeyPairGenerator = new RsaKeyPairGenerator();
-            var genParam = new RsaKeyGenerationParameters(BigInteger.ValueOf(0x10001), new SecureRandom(), 4096, 128);
+            var genParam = new RsaKeyGenerationParameters(BigInteger.ValueOf(0x10001), new SecureRandom(), 1024, 128);
             rsaKeyPairGenerator.Init(genParam);
             AsymmetricCipherKeyPair pair = rsaKeyPairGenerator.GenerateKeyPair();
             TextWriter textWriter = new StringWriter();
@@ -62,7 +62,7 @@ namespace FuhrerShare.Core.Setup
             csr = Convert.ToBase64String(pkcs10CertificationRequest.GetEncoded());
             publicKey = pair.Public.ToString();
             ihash = idhash;
-            GeneratePfx(publicKey, privateKey, pass);
+            //GeneratePfx(publicKey, privateKey, pass);
         }
         public void GeneratePfx(string pubkey, string privkey, string pass)
         {

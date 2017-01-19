@@ -82,9 +82,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 150);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 13);
+            this.label2.Size = new System.Drawing.Size(161, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Password for private key:";
+            this.label2.Text = "Password for private key and ID:";
             // 
             // button1
             // 

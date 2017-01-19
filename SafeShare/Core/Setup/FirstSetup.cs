@@ -75,12 +75,12 @@ namespace FuhrerShare.Core.Setup
                 }
             }
             NetworkSetup NS = new NetworkSetup(CM, PM);
-            openFileDialog1.Filter = "gpg2.exe";
+            /*openFileDialog1.Filter = "gpg2.exe";
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK && openFileDialog1.CheckFileExists)
             {
                 Config.Gpg2exe = openFileDialog1.FileName;
-            }
+            }*/
             NS.Show();
             Close();
         }

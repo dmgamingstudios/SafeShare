@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -24,7 +25,7 @@ namespace FuhrerShare
         {
             try
             {
-                foreach(string File in Directory.GetFiles(Application.StartupPath + "\\identities\\"))
+                foreach (string File in Directory.GetFiles(Application.StartupPath + "\\identities\\"))
                 {
                     string nodedata = null;
                     using (StreamReader rw = new StreamReader(File))
@@ -37,22 +38,7 @@ namespace FuhrerShare
             }
             catch (Exception ex)
             {
-                
-            }
-        }
-        public static void SaveLocal(LocalSafeNode node)
-        {
-            try
-            {
-                string file = Application.StartupPath + "\\identities\\" + node.identity.name;
-                using (StreamWriter sw = new StreamWriter(file))
-                {
-                    string filedata = node.identity.hash + "|" + node.identity.name + "|" + node.hiddenid + "|" + node.ip + "|" + node.port + "|" + Convert.ToBase64String(node.identity.pfxcert.Export(System.Security.Cryptography.X509Certificates.X509ContentType.Pkcs12));
-                    sw.WriteLine(filedata);
-                }
-            }
-            catch (Exception ex)
-            {
+
             }
         }
         public static string Gpg2exe

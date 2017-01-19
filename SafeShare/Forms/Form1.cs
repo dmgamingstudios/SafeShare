@@ -1,4 +1,5 @@
-﻿using FuhrerShare.Core.Setup;
+﻿using FuhrerShare.Core.Nodes;
+using FuhrerShare.Core.Setup;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,21 +15,17 @@ namespace FuhrerShare
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        LocalSafeNode _node;
+        public Form1(LocalSafeNode node)
         {
             InitializeComponent();
+            _node = node;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if(!Config.SetupDone)
-            {
-                FirstSetup FS = new FirstSetup();
-                FS.ShowDialog();
-            }
-            Hide();
-            //if (!File.Exists(Application.StartupPath + "\\nodes.dat"))
-               // BeginDownloadNodeFile();
+            if (!File.Exists(Application.StartupPath + "\\nodes.dat"))
+               BeginDownloadNodeFile();
         }
         public void BeginDownloadNodeFile()
         {
