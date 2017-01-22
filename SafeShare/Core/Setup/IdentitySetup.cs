@@ -89,7 +89,7 @@ namespace FuhrerShare.Core.Setup
         {
             Config.LocalNode = new Nodes.LocalSafeNode(textBox1.Text, "127.0.0.1", 5248, PfxCert, true, ihash);
             Config.SetupDone = true;
-            new SaveIdentity(Config.LocalNode);
+            new SaveIdentity(Config.LocalNode, textBox2.Text);
             MessageBox.Show("We are done YAY");
         }
 

@@ -38,6 +38,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeSharePlugin", "SafeShar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeSharePluginCompiler", "SafeSharePluginCompiler\SafeSharePluginCompiler.csproj", "{CC9896C9-E15B-41FF-8145-306988C3F39D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperNodeDataLib", "SuperNodeDataLib\SuperNodeDataLib.csproj", "{549B710F-8EC8-48F9-9637-25CE580B4856}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -108,6 +110,18 @@ Global
 		{CC9896C9-E15B-41FF-8145-306988C3F39D}.Trace|Any CPU.Build.0 = Release|Any CPU
 		{CC9896C9-E15B-41FF-8145-306988C3F39D}.Trace|x64.ActiveCfg = Release|Any CPU
 		{CC9896C9-E15B-41FF-8145-306988C3F39D}.Trace|x64.Build.0 = Release|Any CPU
+		{549B710F-8EC8-48F9-9637-25CE580B4856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{549B710F-8EC8-48F9-9637-25CE580B4856}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{549B710F-8EC8-48F9-9637-25CE580B4856}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{549B710F-8EC8-48F9-9637-25CE580B4856}.Debug|x64.Build.0 = Debug|Any CPU
+		{549B710F-8EC8-48F9-9637-25CE580B4856}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{549B710F-8EC8-48F9-9637-25CE580B4856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{549B710F-8EC8-48F9-9637-25CE580B4856}.Release|x64.ActiveCfg = Release|Any CPU
+		{549B710F-8EC8-48F9-9637-25CE580B4856}.Release|x64.Build.0 = Release|Any CPU
+		{549B710F-8EC8-48F9-9637-25CE580B4856}.Trace|Any CPU.ActiveCfg = Release|Any CPU
+		{549B710F-8EC8-48F9-9637-25CE580B4856}.Trace|Any CPU.Build.0 = Release|Any CPU
+		{549B710F-8EC8-48F9-9637-25CE580B4856}.Trace|x64.ActiveCfg = Release|Any CPU
+		{549B710F-8EC8-48F9-9637-25CE580B4856}.Trace|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

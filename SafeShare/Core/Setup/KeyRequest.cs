@@ -16,6 +16,7 @@ using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static FuhrerShare.Core.Networking.ProxyEngine;
 
 namespace FuhrerShare.Core.Setup
@@ -24,6 +25,7 @@ namespace FuhrerShare.Core.Setup
     {
         public X509Certificate2 Request(string name, string pass, bool canuse_clear = true, bool canuse_tor = false, bool canuse_i2p = false)
         {
+            MessageBox.Show("Automated signing does not yet work, create an issue on github with your csr");
             TcpClient client = new TcpClient();
             Socks5ProxyClient SPC;
             HttpProxyClient HPC;
